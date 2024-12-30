@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from config import DB_URL, DB_NAME
+from Fsubv3.config import DB_URL, DB_NAME
 
 # Database MongoDB
 dbclient = MongoClient(DB_URL)

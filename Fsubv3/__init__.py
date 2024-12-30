@@ -1,7 +1,5 @@
 from sys import exit
-
 from pyrogram import Client
-
 import config
 
 

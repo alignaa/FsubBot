@@ -1,10 +1,9 @@
 from os import remove
 from os.path import exists
-
-from core.bot import Bot
+from Fsubv3 import Bot
 import config
 from pyrogram import filters, types
-
+from Fsubv3.config import LOGGER
 
 @Bot.on_message(filters.command("log") & filters.user(config.ADMINS))
 async def logs(_, m: types.Message):

@@ -1,13 +1,8 @@
 import os
 import config
-
 from pyrogram import filters
 from pyrogram.types import Message
-from dotenv import load_dotenv
-
-from core.bot import Bot
-
-
+from Fsubv3 import Bot
 
 @Bot.on_message(filters.command("env") & filters.user(config.ADMINS) & filters.private)
 async def show_env_info(client: Bot, message: Message):

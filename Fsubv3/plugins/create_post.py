@@ -3,11 +3,9 @@ import asyncio
 from pyrogram import filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-
-from core.bot import Bot
-from config import ADMINS, CHANNEL_DB, DISABLE_CHANNEL_BUTTON, LOGGER
+from Fsubv3 import Bot
+from Fsubv3.config import ADMINS, CHANNEL_DB, DISABLE_CHANNEL_BUTTON, LOGGER
 from core import func
-
 
 @Bot.on_message(
     filters.private
