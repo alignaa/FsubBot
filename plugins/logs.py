@@ -1,10 +1,12 @@
 from os import remove
 from os.path import exists
-from Fsubv3 import Bot
-from pyrogram import filters, types
-from Fsubv3.config import LOGGER, ADMINS
 
-@Bot.on_message(filters.command("log") & filters.user(ADMINS))
+from core.bot import Bot
+import config
+from pyrogram import filters, types
+
+
+@Bot.on_message(filters.command("log") & filters.user(config.ADMINS))
 async def logs(_, m: types.Message):
     logs_path = "logs.txt"
     if exists(logs_path):

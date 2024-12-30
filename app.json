@@ -10,13 +10,18 @@
     "CHANNEL_DB": {
       "required": true
     },
+    "DATABASE_TYPE": {
+      "description": "Isi sesuai Database yang kalian ingin isi.",
+      "value": "mongo/sql ( pilih salah satu )",
+      "required": true
+    },
     "DB_URL": {
-      "description": "Isi Database mongodb",
-      "value": "",
+      "description": "Isi Database sesuai type sql/mongo",
+      "value": "postgres://blabla:user@pw.db.elephantsql.com/blabla ( contoh )",
       "required": true
     },
     "DB_NAME": {
-      "description": "Isi dengan Nama Database DISARANKAN ISI SESUAI USERNAME BOT KALIAN",
+      "description": "Isi dengan Nama Database DISARANKAN ISI SESUAI USERNAME BOT KALIAN (Kosongkan jika ingin mengisi SQL)",
       "required": true
     },
     "FORCE_SUB_1": {

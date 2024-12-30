@@ -1,18 +1,21 @@
-import sys
+from sys import exit
+
 from pyrogram import Client
-from Fsubv3.config import *
+
+import config
+
 
 class Bot(Client):
     def __init__(self):
         super().__init__(
             name="Bot",
-            api_id=APP_ID,
-            api_hash=API_HASH,
-            plugins=dict(root="Fsubv3/plugins"),
-            bot_token=BOT_TOKEN,
+            api_id=config.APP_ID,
+            api_hash=config.API_HASH,
+            plugins=dict(root="plugins"),
+            bot_token=config.BOT_TOKEN,
             in_memory=True,
         )
-        self.LOGGER = LOGGER
+        self.LOGGER = config.LOGGER
 
     async def start(self):
         try:
@@ -26,9 +29,9 @@ class Bot(Client):
             )
         except Exception as e:
             self.LOGGER(__name__).warning(e)
-            sys.exit()
+            exit()
 
-        for key, channel_id in FORCE_SUB_.items():
+        for key, channel_id in config.FORCE_SUB_.items():
             try:
                 info = await self.get_chat(channel_id)
                 link = info.invite_link
@@ -38,8 +41,8 @@ class Bot(Client):
                 setattr(self, f"invitelink{key}", link)
                 self.LOGGER(__name__).info(
                     f"FORCE_SUB_{key} Detected!\n"
-                    f"Title: {info.title}\n"
-                    f"Chat ID: {info.id}\n\n"
+                    f"  Title: {info.title}\n"
+                    f"  Chat ID: {info.id}\n\n"
                 )
             except Exception as e:
                 self.LOGGER(__name__).warning(e)
@@ -47,10 +50,10 @@ class Bot(Client):
                     f"Pastikan @{self.username} "
                     f"menjadi Admin di FORCE_SUB_{key}\n\n"
                 )
-                sys.exit()
+                exit()
 
         try:
-            db_channel = await self.get_chat(CHANNEL_DB)
+            db_channel = await self.get_chat(config.CHANNEL_DB)
             self.db_channel = db_channel
             await self.send_message(chat_id=db_channel.id, text="Bot Aktif!\n\n")
             self.LOGGER(__name__).info(
@@ -64,7 +67,7 @@ class Bot(Client):
                 f"Pastikan @{self.username} "
                 "menjadi Admin di CHANNEL_DB\n\n"
             )
-            sys.exit()
+            exit()
 
         self.LOGGER(__name__).info(
             "Bot Aktif!\n\n"
