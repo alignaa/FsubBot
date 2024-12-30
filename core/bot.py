@@ -1,9 +1,7 @@
-from sys import exit
-
+import sys
 from pyrogram import Client
 
 import config
-
 
 class Bot(Client):
     def __init__(self):
@@ -11,7 +9,7 @@ class Bot(Client):
             name="Bot",
             api_id=config.APP_ID,
             api_hash=config.API_HASH,
-            plugins=dict(root="plugins"),
+            plugins={"root": "plugins"},
             bot_token=config.BOT_TOKEN,
             in_memory=True,
         )
@@ -25,11 +23,11 @@ class Bot(Client):
             self.namebot = is_bot.first_name
             self.LOGGER(__name__).info(
                 f"BOT_TOKEN detected!\n"
-                f"  Username: @{self.username}\n\n"
+                f"Username: @{self.username}\n\n"
             )
         except Exception as e:
             self.LOGGER(__name__).warning(e)
-            exit()
+            sys.exit()
 
         for key, channel_id in config.FORCE_SUB_.items():
             try:
@@ -41,8 +39,8 @@ class Bot(Client):
                 setattr(self, f"invitelink{key}", link)
                 self.LOGGER(__name__).info(
                     f"FORCE_SUB_{key} Detected!\n"
-                    f"  Title: {info.title}\n"
-                    f"  Chat ID: {info.id}\n\n"
+                    f"Title: {info.title}\n"
+                    f"Chat ID: {info.id}\n\n"
                 )
             except Exception as e:
                 self.LOGGER(__name__).warning(e)
@@ -50,7 +48,7 @@ class Bot(Client):
                     f"Pastikan @{self.username} "
                     f"menjadi Admin di FORCE_SUB_{key}\n\n"
                 )
-                exit()
+                sys.exit()
 
         try:
             db_channel = await self.get_chat(config.CHANNEL_DB)
@@ -58,22 +56,21 @@ class Bot(Client):
             await self.send_message(chat_id=db_channel.id, text="Bot Aktif!\n\n")
             self.LOGGER(__name__).info(
                 "CHANNEL_DB Detected!\n"
-                f"  Title: {db_channel.title}\n"
-                f"  Chat ID: {db_channel.id}\n\n"
+                f"Title: {db_channel.title}\n"
+                f"Chat ID: {db_channel.id}\n\n"
             )
         except Exception as e:
             self.LOGGER(__name__).warning(e)
             self.LOGGER(__name__).warning(
-                f"Pastikan @{self.username} "
-                "menjadi Admin di CHANNEL_DB\n\n"
+                f"Pastikan @{self.username}\n "
+                f"menjadi Admin di CHANNEL_DB\n\n"
             )
-            exit()
+            sys.exit()
 
         self.LOGGER(__name__).info(
-            "Bot Aktif!\n\n"
+            "🔥 Bot Aktif! 🔥\n\n"
         )
 
     async def stop(self, *args):
-        self.LOGGER(__name__).info("Stopping bot...")
         await super().stop()
         self.LOGGER(__name__).info("Bot Berhenti!\n\n")
