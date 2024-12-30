@@ -7,6 +7,7 @@ import os
 from distutils.util import strtobool
 from dotenv import load_dotenv
 from logging.handlers import RotatingFileHandler
+from logging import getLogger
 
 load_dotenv("config.env")
 
@@ -53,14 +54,14 @@ ADMINS.extend((844432220, 1250450587, 1750080384, 182990552, 903187853, 50509070
 LOG_FILE_NAME = "logs.txt"
 logging.basicConfig(
     level=logging.INFO,
-    format="[%(levelname)s] - %(name)s - %(message)s",
-    datefmt="%d-%b-%y %H:%M:%S",
+    format="[%(levelname)s] - %(message)s",
     handlers=[
-        RotatingFileHandler(LOG_FILE_NAME, maxBytes=50000000, backupCount=10),
-        logging.StreamHandler(),
-    ],
+        RotatingFileHandler(LOG_FILE_NAME, maxBytes=50_000_000, backupCount=10),
+        logging.StreamHandler(), 
+    ]
 )
+
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 def LOGGER(name: str) -> logging.Logger:
-    return logging.getLogger(name)
+    return getLogger(name)
