@@ -8,7 +8,7 @@ class Bot(Client):
             name="Bot",
             api_id=APP_ID,
             api_hash=API_HASH,
-            plugins=dict(root="plugins"),
+            plugins=dict(root="Fsubv3/plugins"),
             bot_token=BOT_TOKEN,
             in_memory=True,
         )
