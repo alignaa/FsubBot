@@ -1,10 +1,10 @@
 import os
-import config
+from Fsubv3.config import ADMINS
 from pyrogram import filters
 from pyrogram.types import Message
 from Fsubv3 import Bot
 
-@Bot.on_message(filters.command("env") & filters.user(config.ADMINS) & filters.private)
+@Bot.on_message(filters.command("env") & filters.user(ADMINS) & filters.private)
 async def show_env_info(client: Bot, message: Message):
     env_vars_to_show = [
         "APP_ID",

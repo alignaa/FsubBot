@@ -1,10 +1,10 @@
-import config
+from Fsubv3.config import ADMINS
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from Fsubv3 import Bot
 from Fsubv3.core import func
 
-@Bot.on_message(filters.private & filters.user(config.ADMINS) & filters.command("batch"))
+@Bot.on_message(filters.private & filters.user(ADMINS) & filters.command("batch"))
 async def batch(c: Bot, message: Message):
     while True:
         try:
