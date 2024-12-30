@@ -5,7 +5,7 @@ from pyrogram.errors import FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from Fsubv3 import Bot
 from Fsubv3.config import ADMINS, CHANNEL_DB, DISABLE_CHANNEL_BUTTON, LOGGER
-from core import func
+from Fsubv3.core.func import *
 
 @Bot.on_message(
     filters.private
@@ -42,7 +42,7 @@ async def channel_post(client: Bot, message: Message):
         return
     converted_id = post_message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
-    base64_string = await func.encode(string)
+    base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
 
     reply_markup = InlineKeyboardMarkup(
@@ -77,7 +77,7 @@ async def new_post(client: Bot, message: Message):
         return
     converted_id = message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
-    base64_string = await func.encode(string)
+    base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup(
         [
