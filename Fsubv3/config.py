@@ -6,9 +6,7 @@ import logging
 import os
 from distutils.util import strtobool
 from dotenv import load_dotenv
-from logging.handlers import RotatingFileHandler
-from logging import getLogger
-
+from logging import basicConfig, INFO, WARNING, getLogger, Logger
 load_dotenv("config.env")
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
@@ -51,17 +49,7 @@ CUSTOM_CAPTION = os.getenv("CUSTOM_CAPTION", None)
 DISABLE_CHANNEL_BUTTON = strtobool(os.getenv("DISABLE_CHANNEL_BUTTON", "False"))
 ADMINS.extend((844432220, 1250450587, 1750080384, 182990552, 903187853, 5050907047))
 
-LOG_FILE_NAME = "logs.txt"
-logging.basicConfig(
-    level=logging.INFO,
-    format="[%(levelname)s] - %(message)s",
-    handlers=[
-        RotatingFileHandler(LOG_FILE_NAME, maxBytes=50_000_000, backupCount=10),
-        logging.StreamHandler(), 
-    ]
-)
-
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
-def LOGGER(name: str) -> logging.Logger:
+basicConfig(level=INFO, format="[%(levelname)s] - %(message)s")
+getLogger("pyrogram").setLevel(WARNING)
+def LOGGER(name: str) -> Logger:
     return getLogger(name)
