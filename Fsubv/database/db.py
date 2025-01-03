@@ -30,15 +30,11 @@ def create_table():
             )
         ''')
 
-        print("Tabel berhasil dibuat.")
-    
     except sqlite3.Error as e:
         print(f"Terjadi kesalahan saat membuat tabel: {e}")
     
     finally:
         close_db(conn, cursor)
-
-create_table()
 
 def add_user(bot_id, user_id, user_name):
     conn, cursor = get_db_connection()
