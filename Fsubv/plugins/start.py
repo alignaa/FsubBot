@@ -14,7 +14,7 @@ from Fsubv.config import (
     PROTECT_CONTENT,
     START_MSG,
 )
-from database.db import add_user, full_userbase, del_user
+from Fsubv.database.db import add_user, full_userbase, del_user
 from pyrogram import filters
 from pyrogram.errors import FloodWait, UserDeactivated, UserIsBlocked, PeerIdInvalid
 from pyrogram.types import InlineKeyboardMarkup, Message
