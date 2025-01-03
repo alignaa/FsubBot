@@ -1,9 +1,13 @@
 import sqlite3
 from threading import RLock
 from Fsubv.config import LOGGER
+import os
 
-DB_PATH = "database.db"
-conn = sqlite3.connect(DB_PATH, check_same_thread=False)
+DB_FOLDER = 'C:/sqlite3'
+DB_FILE = 'fsub.db'
+DB_PATH = os.path.join(DB_FOLDER, DB_FILE)
+
+conn = sqlite3.connect(DB_PATH, exist_ok=True, check_same_thread=False)
 cursor = conn.cursor()
 
 LOGGER.infoI("Database connected successfully: %s", DB_PATH)
