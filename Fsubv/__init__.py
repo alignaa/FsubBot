@@ -8,7 +8,7 @@ class Bot(Client):
             name="Bot",
             api_id=config.APP_ID,
             api_hash=config.API_HASH,
-            plugins={"root": "plugins"},
+            plugins={"root": "Fsubv/plugins"},
             bot_token=config.BOT_TOKEN,
             in_memory=True,
         )
