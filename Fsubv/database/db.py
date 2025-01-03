@@ -3,6 +3,10 @@ import os
 import sqlite3
 from threading import RLock
 from contextlib import contextmanager
+import logging
+
+logging.basicConfig(level=logging.INFO)
+LOGGER = logging.getLogger(__name__)
 
 # Konfigurasi database
 DB_FOLDER = 'C:/sqlite3'
