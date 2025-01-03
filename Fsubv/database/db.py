@@ -6,7 +6,7 @@ from contextlib import contextmanager
 
 # Konfigurasi database
 DB_FOLDER = 'C:/sqlite3'
-DB_FILE = 'coba.db'
+DB_FILE = 'fsub.db'
 DB_PATH = os.path.join(DB_FOLDER, DB_FILE)
 
 # Buat folder jika belum ada
