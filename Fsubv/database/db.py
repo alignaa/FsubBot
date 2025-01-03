@@ -1,32 +1,26 @@
 from Fsubv.config import LOGGER
-import os
 import sqlite3
-from threading import RLock
-from contextlib import contextmanager
-import logging
+import os
 
-logging.basicConfig(level=logging.INFO)
-LOGGER = logging.getLogger(__name__)
+db_folder = 'C:/sqlite3'
+db_file = 'fsub.db'
+db_path = os.path.join(db_folder, db_file)
 
-# Konfigurasi database
-DB_FOLDER = 'C:/sqlite3'
-DB_FILE = 'fsub.db'
-DB_PATH = os.path.join(DB_FOLDER, DB_FILE)
-
-os.makedirs(DB_FOLDER, exist_ok=True)
+os.makedirs(db_folder, exist_ok=True)
 
 def get_db_connection():
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(db_path)
+    conn.execute('PRAGMA foreign_keys = ON;')
     cursor = conn.cursor()
-    conn.execute('PRAGMA foreign_keys = ON;')  # Menjamin foreign key aktif
     return conn, cursor
 
-def close_db_connection(conn, cursor):
+def close_db(conn, cursor):
     cursor.close()
     conn.close()
 
 def create_table():
     conn, cursor = get_db_connection()
+    
     try:
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS broadcast (
@@ -35,11 +29,14 @@ def create_table():
                 user_name TEXT
             )
         ''')
-        conn.commit()
-        LOGGER.info("Table 'broadcast' is ready or already exists")
+
+        print("Tabel berhasil dibuat.")
+    
+    except sqlite3.Error as e:
+        print(f"Terjadi kesalahan saat membuat tabel: {e}")
+    
     finally:
-        cursor.close()
-        conn.close()
+        close_db(conn, cursor)
 
 def add_user(bot_id, user_id, user_name):
     conn, cursor = get_db_connection()
