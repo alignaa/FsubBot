@@ -1,4 +1,4 @@
-import config
+from Fsubv import config
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from Fsubv import Bot
