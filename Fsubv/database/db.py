@@ -38,6 +38,8 @@ def create_table():
     finally:
         close_db(conn, cursor)
 
+create_table()
+
 def add_user(bot_id, user_id, user_name):
     conn, cursor = get_db_connection()
     try:
@@ -72,5 +74,3 @@ def del_user(user_id):
     finally:
         cursor.close()
         conn.close()
-
-create_table()
