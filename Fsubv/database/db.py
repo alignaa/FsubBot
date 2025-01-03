@@ -7,7 +7,7 @@ DB_FOLDER = 'C:/sqlite3'
 DB_FILE = 'fsub.db'
 DB_PATH = os.path.join(DB_FOLDER, DB_FILE)
 
-conn = sqlite3.connect(DB_PATH, exist_ok=True, check_same_thread=False)
+conn = sqlite3.connect(DB_PATH, check_same_thread=False)
 cursor = conn.cursor()
 
 LOGGER.info("Database connected successfully: %s", DB_PATH)
