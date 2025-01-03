@@ -10,7 +10,7 @@ DB_PATH = os.path.join(DB_FOLDER, DB_FILE)
 conn = sqlite3.connect(DB_PATH, exist_ok=True, check_same_thread=False)
 cursor = conn.cursor()
 
-LOGGER.infoI("Database connected successfully: %s", DB_PATH)
+LOGGER.info("Database connected successfully: %s", DB_PATH)
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS broadcast (
