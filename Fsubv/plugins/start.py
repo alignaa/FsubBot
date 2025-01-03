@@ -5,9 +5,8 @@
 import asyncio
 from datetime import datetime
 from time import time
-
-from core.bot import Bot
-from config import (
+from Fsubv import Bot
+from Fsubv.config import (
     ADMINS,
     CUSTOM_CAPTION,
     DISABLE_CHANNEL_BUTTON,
@@ -19,10 +18,8 @@ from database.db import add_user, full_userbase, del_user
 from pyrogram import filters
 from pyrogram.errors import FloodWait, UserDeactivated, UserIsBlocked, PeerIdInvalid
 from pyrogram.types import InlineKeyboardMarkup, Message
-
-from core import func
-
-from core.button import fsub_button, start_button
+from Fsubv.plugins import func
+from .button import fsub_button, start_button
 
 START_TIME = datetime.now()
 START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()

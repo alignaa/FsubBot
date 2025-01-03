@@ -1,10 +1,8 @@
-import config
-
+from Fsubv import config
 from pyrogram import enums
 from pyrogram.types import InlineKeyboardButton
 
 chat_info_cache = {}
-
 
 async def get_chat_info(client, chat_id):
     if chat_id in chat_info_cache:

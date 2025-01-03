@@ -1,7 +1,6 @@
 import sys
 from pyrogram import Client
-
-import config
+from Fsubv import config
 
 class Bot(Client):
     def __init__(self):

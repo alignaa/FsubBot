@@ -1,4 +1,4 @@
-from core.bot import Bot
+from Fsubv import Bot
 
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, Message

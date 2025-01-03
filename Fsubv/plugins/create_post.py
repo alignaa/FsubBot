@@ -1,12 +1,10 @@
 import asyncio
-
 from pyrogram import filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-
-from core.bot import Bot
-from config import ADMINS, CHANNEL_DB, DISABLE_CHANNEL_BUTTON, LOGGER
-from core import func
+from Fsubv import Bot
+from Fsubv.config import ADMINS, CHANNEL_DB, DISABLE_CHANNEL_BUTTON, LOGGER
+from Fsubv.plugins import func
 
 
 @Bot.on_message(

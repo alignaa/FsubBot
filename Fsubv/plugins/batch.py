@@ -1,10 +1,8 @@
 import config
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-
-from core.bot import Bot
-from core import func
-
+from Fsubv import Bot
+from Fsubv.plugins import func
 
 @Bot.on_message(filters.private & filters.user(config.ADMINS) & filters.command("batch"))
 async def batch(c: Bot, message: Message):

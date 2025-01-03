@@ -4,8 +4,7 @@ Syntax: /id"""
 from pyrogram import filters
 from pyrogram.types import Message
 
-from core.bot import Bot
-
+from Fsubv import Bot
 
 @Bot.on_message(filters.command("id") & filters.private)
 async def showid(client: Bot, message: Message):
