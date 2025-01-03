@@ -3,7 +3,6 @@ Syntax: /id"""
 
 from pyrogram import filters
 from pyrogram.types import Message
-
 from Fsubv import Bot
 
 @Bot.on_message(filters.command("id") & filters.private)

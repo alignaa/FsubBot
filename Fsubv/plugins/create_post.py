@@ -6,7 +6,6 @@ from Fsubv import Bot
 from Fsubv.config import ADMINS, CHANNEL_DB, DISABLE_CHANNEL_BUTTON, LOGGER
 from Fsubv.plugins import func
 
-
 @Bot.on_message(
     filters.private
     & filters.user(ADMINS)

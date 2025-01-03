@@ -3,7 +3,6 @@ import config
 from pyrogram import filters
 from pyrogram.types import Message
 from dotenv import load_dotenv
-
 from Fsubv import Bot
 
 @Bot.on_message(filters.command("env") & filters.user(config.ADMINS) & filters.private)
