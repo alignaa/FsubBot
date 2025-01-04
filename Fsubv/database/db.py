@@ -6,8 +6,8 @@ LOGGER = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 DB_HOST = 'localhost'
-DB_USER = 'root'  # Ganti dengan username MySQL Anda
-DB_PASSWORD = 'ranzdb'  # Ganti dengan password MySQL Anda
+DB_USER = 'ranzxy'  # Ganti dengan username MySQL Anda
+DB_PASSWORD = 'passranzy'  # Ganti dengan password MySQL Anda
 DB_NAME = 'fsrans'  # Nama database MySQL yang ingin Anda gunakan
 
 def get_db_connection():
